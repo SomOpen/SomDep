@@ -10,8 +10,8 @@ export default function Footer() {
       <ul className="flex gap-5 flex-wrap justify-center items-center max-[600px]:gap-4 max-[600px]:mb-5">
         {
           sections
-            ? sections.map((section) => (
-                <li>
+            ? sections.map((section, i) => (
+                <li key={i}>
                   <a className="text-slate-400 italic" href={section === "Home" ? "/" : "/" + section.toLowerCase() }>
                     {section}
                   </a>
