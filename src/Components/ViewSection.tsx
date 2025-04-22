@@ -1,6 +1,6 @@
 import GithubIcon from "../Icons/GithubIcon";
-import SearchIcon from "../Icons/SearchIcon";
 import TerminalIcon from "../Icons/TerminalIcon";
+import SearchComponent from "./SearchComponent";
 
 export default function ViewSection() {
   return (
@@ -26,16 +26,7 @@ export default function ViewSection() {
           isticmaalkooda.
         </p>
       </div>
-      <div className="w-full flex gap-3 items-center justify-center">
-        <input
-          type="search"
-          placeholder="Search..."
-          className="p-3 border border-slate-200 rounded-md bg-white shadow-md outline-none max-w-[500px] w-full"
-        />
-        <button className="cursor-pointer p-3 bg-emerald-400 text-slate-50 rounded-md border border-slate-100 shadow-md">
-          <SearchIcon />
-        </button>
-      </div>
+      <SearchComponent/>
       <div className="w-full flex gap-2 justify-center items-center p-2">
         <button className="rounded-md bg-emerald-400 shadow-md py-2 px-3 cursor-pointer font-bold text-slate-50 border border-slate-200">
           <a href="" className="flex gap-2 items-center ">
