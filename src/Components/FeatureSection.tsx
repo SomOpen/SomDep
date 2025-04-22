@@ -6,12 +6,13 @@ import GemIcon from "../Icons/GemIcon";
 import TerminalIcon from "../Icons/TerminalIcon";
 import { advantages_of_somdep } from "../Data/data";
 import logo from "/somdep.svg";
+
 export default function FeatureSection() {
-  const icons = [<ErrorIcon/>, <NewIcon/>, <GemIcon/>, <TerminalIcon/>];
+  const icons = [<ErrorIcon/>, <NewIcon/>, <GemIcon dimension={20}/>, <TerminalIcon/>];
   return (
     <section className="pattern-two min-h-[500px] p-2 py-4 flex flex-col gap-4">
       <div className="w-full flex justify-center items-center">
-        <h1 className="text-lg flex gap-2 items-center text-[1.8rem] italic text-slate-600 p-1 px-2 rounded-md bg-emerald-50 border border-slate-200 w-fit">
+        <h1 className="text-lg max-[355px]:text-[1.2rem] flex gap-2 items-center text-[1.8rem] italic text-slate-600 p-1 px-2 rounded-md bg-emerald-50 border border-slate-200 w-fit">
           <FeatureIcon dimension={30}/>
           Faa'iidooyinka 
           <span style={{fontFamily: "Grand Hotel"}} className="text-emerald-400 flex gap-2 items-center">
