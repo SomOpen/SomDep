@@ -1,4 +1,4 @@
-import logo from "/somdep.svg";
+import logo from "../assets/somdep.svg";
 import GithubIcon from "../Icons/GithubIcon";
 import DiscordIcon from "../Icons/DiscordIcon";
 import DocumentIcon from "../Icons/DocumentIcon";
