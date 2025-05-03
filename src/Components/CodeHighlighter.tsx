@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
-import hljs from 'highlight.js';
+import { useEffect, useRef } from "react";
+import hljs from "highlight.js";
 
-const CodeHighlighter = ({ code } : {code: string}) => {
+const CodeHighlighter = ({ code }: { code: string }) => {
   const codeRef = useRef(null);
 
   useEffect(() => {
@@ -10,12 +10,17 @@ const CodeHighlighter = ({ code } : {code: string}) => {
     }
   }, [code]);
 
+  
+
   return (
-    <pre>
-      <code ref={codeRef}>
-        {code}
-      </code>
-    </pre>
+    <div className="px-1 py-2 flex items-center justify-center">
+      <div className="w-[800px] max-w-full overflow-hidden rounded-md">
+      <div className="min-h-[40px] bg-[#101010]"></div>
+        <pre className="overflow-auto">
+          <code className="overflow-auto" ref={codeRef}>{code}</code>
+        </pre>
+    </div>
+    </div>
   );
 };
 
