@@ -3,7 +3,7 @@ import ViewSection from "../Components/ViewSection";
 import FeatureSection from "../Components/FeatureSection";
 import Footer from "../Components/Footer";
 
-export default function Layout() {
+export default function Home() {
   return (
     <main className="flex-1 flex flex-col">
       <Nav />
