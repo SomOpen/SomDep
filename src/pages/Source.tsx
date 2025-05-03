@@ -1,28 +1,68 @@
-import SideBar from "../Components/SideBar"
-import Nav from "../Components/Nav"
-import Footer from "../Components/Footer"
-import CodeHighlighter from "../Components/CodeHighlighter";
-import Status from "../Components/Status";
-
-const code = `// Hello
-print(os.getenv("USER") or os.getenv("USERNAME"));
-print(os.data)
-`
+import output from "../../output/output.json";
+import SourceCodeIcon from "../Icons/SourceCodeIcon";
+import CubesIcon from "../Icons/CubesIcon";
+import LibraryIcon from "../Icons/LibraryIcon";
+import PlatformIcon from "../Icons/PlatformIcon";
+import DatabaseIcon from "../Icons/DatabaseIcon";
+import DevToolsIcon from "../Icons/DevToolsIcon";
+import RuntimeIcon from "../Icons/RuntimeIcon";
+import FolderIcon from "../Icons/FolderIcon";
+import Layout from "../Components/Layout";
 
 export default function AllFiles() {
   return (
-    <div className="relative h-screen">
-      {/* Left Side */}
-      <SideBar/>
-      {/* Right Side */}
-      <div className="ml-[250px] max-[850px]:ml-0 max-w-full flex flex-col h-full">
-        <Nav show_top_layer={false} show_source={false} show_menu_btn ={true}/>
-        <main className="flex-1">
-          <CodeHighlighter code={code}/>
-          <Status/>
-        </main>
-        <Footer/>
+    <Layout>
+      <div className="w-full flex gap-5 items-center justify-center flex-wrap p-2">
+        {Object.values(output).map((value: any) =>
+          Object.keys(value).map((key: any) => (
+            <div
+              key={key}
+              className="max-w-full w-[300px] border border-slate-300/80 shadow-md rounded flex items-center justify-center flex-col gap-2"
+            >
+              <div className="flex items-center flex-col p-2">
+                <div className="p-1">
+                  {key === "languages" ? (
+                    <div className="text-indigo-300 border rounded-full p-1">
+                      <SourceCodeIcon />
+                    </div>
+                  ) : key === "frameworks" ? (
+                    <div className="text-indigo-300 border rounded-full p-1">
+                      <CubesIcon />
+                    </div>
+                  ) : key === "libraries" ? (
+                    <div className="text-indigo-300 border rounded-full p-1">
+                      <LibraryIcon />
+                    </div>
+                  ) : key === "platforms" ? (
+                    <div className="text-indigo-300 border rounded-full p-1">
+                      <PlatformIcon />
+                    </div>
+                  ) : key === "databases" ? (
+                    <div className="text-indigo-300 border rounded-full p-1">
+                      <DatabaseIcon />
+                    </div>
+                  ) : key === "runtime" ? (
+                    <div className="text-indigo-300 border rounded-full p-1">
+                      <RuntimeIcon />
+                    </div>
+                  ) : (
+                    <div className="text-indigo-300 border rounded-full p-1">
+                      <DevToolsIcon />
+                    </div>
+                  )}
+                </div>
+                <h1>{key[0].toUpperCase() + key.slice(1)}</h1>
+              </div>
+              <div className="w-full">
+                <span className="flex gap-4 items-center justify-between bg-indigo-50 px-2">
+                  <FolderIcon />
+                  {value[key].contents.length}
+                </span>
+              </div>
+            </div>
+          ))
+        )}
       </div>
-    </div>
-  )
+    </Layout>
+  );
 }
