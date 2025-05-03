@@ -1,11 +1,13 @@
 import SideBar from "../Components/SideBar"
 import Nav from "../Components/Nav"
 import Footer from "../Components/Footer"
-import CodeHighlighter from "../Components/CodeHighlighter"
+import CodeHighlighter from "../Components/CodeHighlighter";
+import Status from "../Components/Status";
 
-const code = `
-  print(os.getenv("USER") or os.getenv("USERNAME"));
-  `
+const code = `// Hello
+print(os.getenv("USER") or os.getenv("USERNAME"));
+print(os.data)
+`
 
 export default function AllFiles() {
   return (
@@ -17,6 +19,7 @@ export default function AllFiles() {
         <Nav show_top_layer={false} show_source={false} show_menu_btn ={true}/>
         <main className="flex-1">
           <CodeHighlighter code={code}/>
+          <Status/>
         </main>
         <Footer/>
       </div>
