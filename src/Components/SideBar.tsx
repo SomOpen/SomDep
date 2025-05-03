@@ -1,4 +1,4 @@
-import logo from "../../public/somdep.svg";
+import logo from "../assets/somdep.svg";
 import ContactIcon from "../Icons/ContactIcon";
 import CubesIcon from "../Icons/CubesIcon";
 import DatabaseIcon from "../Icons/DatabaseIcon";
