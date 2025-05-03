@@ -1,0 +1,47 @@
+[
+  {
+    "databases": {
+      "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\databases",
+      "contents": []
+    }
+  },
+  {
+    "frameworks": {
+      "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\frameworks",
+      "contents": []
+    }
+  },
+  {
+    "languages": {
+      "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\languages",
+      "contents": [
+        "javascript",
+        "python"
+      ]
+    }
+  },
+  {
+    "libraries": {
+      "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\libraries",
+      "contents": []
+    }
+  },
+  {
+    "platforms": {
+      "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\platforms",
+      "contents": []
+    }
+  },
+  {
+    "runtime": {
+      "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\runtime",
+      "contents": []
+    }
+  },
+  {
+    "tools": {
+      "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\tools",
+      "contents": []
+    }
+  }
+]
