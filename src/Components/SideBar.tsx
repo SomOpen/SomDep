@@ -13,27 +13,9 @@ import RuntimeIcon from "../Icons/RuntimeIcon";
 import SideBarIcon from "../Icons/SideBarIcon";
 import SourceCodeIcon from "../Icons/SourceCodeIcon";
 import { useEffect, useRef } from "react";
+import output from "../../output/output.json";
 
-
-const topLevel = [
-  "Languages",
-  "Frameworks",
-  "Libraries",
-  "Platforms",
-  "Runtime",
-  "Databases",
-  "Tools",
-];
-
-const icons = [
-  <SourceCodeIcon />,
-  <CubesIcon />,
-  <LibraryIcon />,
-  <PlatformIcon />,
-  <RuntimeIcon />,
-  <DatabaseIcon />,
-  <DevToolsIcon />,
-];
+const topLevel = Object.values(output).map((value) => Object.keys(value)[0]);
 
 const main_sections = ["Home", "Contribute", "Contact"];
 
@@ -44,7 +26,7 @@ export default function SideBar() {
   useEffect(() => {
     const closeBtn = closeRef.current;
     const sideBar = document.getElementById("sidebar");
-    
+
     function close() {
       if (sideBar) {
         (sideBar as HTMLElement).style.display = "none";
@@ -59,10 +41,13 @@ export default function SideBar() {
       if (sideBar && closeBtn) {
         (closeBtn as HTMLElement).removeEventListener("click", close);
       }
-    }
+    };
   }, []);
   return (
-    <aside id="sidebar" className="max-w-[250px] max-[450px]:max-w-full overflow-auto  block max-[850px]:hidden w-full bg-white border-r-2 border-slate-100 fixed top-0 left-0 right-0 bottom-0">
+    <aside
+      id="sidebar"
+      className="max-w-[250px] max-[450px]:max-w-full overflow-auto  block max-[850px]:hidden w-full bg-white border-r-2 border-slate-100 fixed top-0 left-0 right-0 bottom-0"
+    >
       {/* Header */}
       <div className="p-2 border-b border-slate-200 flex gap-2 items-center justify-between">
         <div className="flex gap-2">
@@ -74,8 +59,11 @@ export default function SideBar() {
             <a href="/">SomDep</a>
           </h1>
         </div>
-        <button ref={closeRef} className="hidden max-[850px]:block text-emerald-500 cursor-pointer">
-          <SideBarIcon dimension={28}/>
+        <button
+          ref={closeRef}
+          className="hidden max-[850px]:block text-emerald-500 cursor-pointer"
+        >
+          <SideBarIcon dimension={28} />
         </button>
       </div>
       {/* Main Sections */}
@@ -93,8 +81,24 @@ export default function SideBar() {
       <ul className="p-2 border-b-2 border-slate-200 flex flex-col gap-3">
         {topLevel.map((category, index) => (
           <li key={index} className="flex gap-2 items-center p-2">
-            <span className="text-slate-500">{icons[index]}</span>
-            <a href="" className="text-slate-500 font-semibold">
+            <span className="text-slate-500">
+              {category === "languages" ? (
+                <SourceCodeIcon />
+              ) : category === "frameworks" ? (
+                <CubesIcon />
+              ) : category === "libraries" ? (
+                <LibraryIcon />
+              ) : category === "platforms" ? (
+                <PlatformIcon />
+              ) : category === "databases" ? (
+                <DatabaseIcon />
+              ) : category === "runtime" ? (
+                <RuntimeIcon />
+              ) : (
+                <DevToolsIcon />
+              )}
+            </span>
+            <a href={`/contents/${category}`} className="text-slate-500 font-semibold">
               {category}
             </a>
           </li>
