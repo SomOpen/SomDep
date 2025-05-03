@@ -21,35 +21,23 @@ export default function AllFiles() {
             >
               <div className="flex items-center flex-col p-2">
                 <div className="p-1">
-                  {key === "languages" ? (
-                    <div className="text-indigo-300 border rounded-full p-1">
+                  <div className="text-indigo-300 border rounded-full p-1">
+                    {key === "languages" ? (
                       <SourceCodeIcon />
-                    </div>
-                  ) : key === "frameworks" ? (
-                    <div className="text-indigo-300 border rounded-full p-1">
+                    ) : key === "frameworks" ? (
                       <CubesIcon />
-                    </div>
-                  ) : key === "libraries" ? (
-                    <div className="text-indigo-300 border rounded-full p-1">
+                    ) : key === "libraries" ? (
                       <LibraryIcon />
-                    </div>
-                  ) : key === "platforms" ? (
-                    <div className="text-indigo-300 border rounded-full p-1">
+                    ) : key === "platforms" ? (
                       <PlatformIcon />
-                    </div>
-                  ) : key === "databases" ? (
-                    <div className="text-indigo-300 border rounded-full p-1">
+                    ) : key === "databases" ? (
                       <DatabaseIcon />
-                    </div>
-                  ) : key === "runtime" ? (
-                    <div className="text-indigo-300 border rounded-full p-1">
+                    ) : key === "runtime" ? (
                       <RuntimeIcon />
-                    </div>
-                  ) : (
-                    <div className="text-indigo-300 border rounded-full p-1">
+                    ) : (
                       <DevToolsIcon />
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
                 <h1>{key[0].toUpperCase() + key.slice(1)}</h1>
               </div>
