@@ -35,7 +35,9 @@
   {
     "runtime": {
       "path": "C:\\Users\\adamc\\Projects\\SomDep\\src\\Data\\runtime",
-      "contents": []
+      "contents": [
+        "nodejs"
+      ]
     }
   },
   {
