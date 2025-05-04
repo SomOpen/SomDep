@@ -1,17 +1,10 @@
 import logo from "../assets/somdep.svg";
 import ContactIcon from "../Icons/ContactIcon";
-import CubesIcon from "../Icons/CubesIcon";
-import DatabaseIcon from "../Icons/DatabaseIcon";
-import DevToolsIcon from "../Icons/DevToolsIcon";
 import DiscordIcon from "../Icons/DiscordIcon";
 import GithubIcon from "../Icons/GithubIcon";
 import HeartIcon from "../Icons/HeartIcon";
 import HomeIcon from "../Icons/HomeIcon";
-import LibraryIcon from "../Icons/LibraryIcon";
-import PlatformIcon from "../Icons/PlatformIcon";
-import RuntimeIcon from "../Icons/RuntimeIcon";
 import SideBarIcon from "../Icons/SideBarIcon";
-import SourceCodeIcon from "../Icons/SourceCodeIcon";
 import { useEffect, useRef } from "react";
 import output from "../../output/output.json";
 import applyIcon from "../Utils/applyIcon";
@@ -47,7 +40,7 @@ export default function SideBar() {
   return (
     <aside
       id="sidebar"
-      className="max-w-[250px] max-[450px]:max-w-full overflow-auto  block max-[850px]:hidden w-full bg-white border-r-2 border-slate-100 fixed top-0 left-0 right-0 bottom-0"
+      className="max-w-[250px] max-[450px]:max-w-full overflow-auto z-999 block max-[850px]:hidden w-full bg-white border-r-2 border-slate-100 fixed top-0 left-0 right-0 bottom-0"
     >
       {/* Header */}
       <div className="p-2 border-b border-slate-200 flex gap-2 items-center justify-between">

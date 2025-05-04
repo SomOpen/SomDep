@@ -1,7 +1,4 @@
-import { useState } from "react";
 import Layout from "../Components/Layout";
-import FolderIcon from "../Icons/FolderIcon";
-import PlayArrowIcon from "../Icons/PlayArrowIcon";
 import extractData from "../Utils/extractData";
 import FileIcon from "../Icons/FileIcon";
 
@@ -9,64 +6,15 @@ interface CategoryProps {
   category: string;
 }
 
-function CollapsibleFolder({
-  name,
-  items,
-  basePath,
-}: {
+interface Subcategory {
   name: string;
   items: string[];
-  basePath: string;
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="border-l-2 border-gray-200 pl-4 mt-2">
-      <div
-        className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
-        onClick={() => setOpen(!open)}
-      >
-        <span
-          className={`transition-transform duration-300 transform ${
-            open ? "rotate-90" : ""
-          } text-gray-500`}
-        >
-          <PlayArrowIcon dimension={22} />
-        </span>
-        <span className="text-lg text-gray-800 font-medium flex items-center gap-2">
-          <FolderIcon />
-          {name}
-        </span>
-      </div>
-
-      {open && (
-        <ul className="ml-6 mt-2 space-y-4">
-          {items.map((item, index) => (
-            <li key={index}>
-              <a
-                href={`/contents/${basePath}/${name}/${item}`}
-                className="flex items-center gap-3 cursor-pointer p-1 rounded-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105"
-              >
-                <span className="text-xl text-gray-500">
-                  <FileIcon dimension={20}/>
-                </span>
-                <span className="text-md text-gray-700 font-semibold hover:text-blue-500 transition-all duration-200 ease-in-out">
-                  {item}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
 }
 
 export default function Category({ category }: CategoryProps) {
   const data = extractData(category);
-  const [open, setOpen] = useState(true);
 
-  const subcategories =
+  const subcategories: Subcategory[] =
     data?.contents?.map((contentObj) => {
       const key = Object.keys(contentObj)[0];
       return {
@@ -77,38 +25,65 @@ export default function Category({ category }: CategoryProps) {
 
   return (
     <Layout>
-      <div className="p-6 bg-white rounded-lg shadow-lg">
-        {/* Root folder */}
-        <div
-          className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 px-4 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
-          onClick={() => setOpen(!open)}
-        >
-          <span
-            className={`transition-transform duration-300 transform ${
-              open ? "rotate-90" : ""
-            } text-gray-500`}
-          >
-            <PlayArrowIcon dimension={22} />
-          </span>
-          <span className="text-xl text-gray-800 font-semibold flex items-center gap-2">
-            <FolderIcon />
-            {data?.title}
-          </span>
+      <div className="flex flex-col md:flex-row gap-8 p-8 bg-gradient-to-r from-blue-50 via-gray-100 to-white rounded-xl shadow-lg">
+        {/* Metadata Table */}
+        <div className="w-full md:w-1/3 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out mt-6 md:mt-0 order-1 md:order-1">
+          <h3 className="text-xl font-semibold text-gray-800 mb-6">Metadata</h3>
+          <table className="min-w-full table-auto">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left py-2 px-4 text-sm text-gray-600">Property</th>
+                <th className="text-left py-2 px-4 text-sm text-gray-600">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b hover:bg-gray-50">
+                <td className="py-2 px-4 text-sm text-gray-600">Last Update</td>
+                <td className="py-2 px-4 text-sm text-gray-800">{data?.lastUpdate || "N/A"}</td>
+              </tr>
+              <tr className="border-b hover:bg-gray-50">
+                <td className="py-2 px-4 text-sm text-gray-600">Contributors</td>
+                <td className="py-2 px-4 text-sm text-gray-800">
+                  {data?.contributors?.length ? data.contributors.join(", ") : "N/A"}
+                </td>
+              </tr>
+              <tr className="border-b hover:bg-gray-50">
+                <td className="py-2 px-4 text-sm text-gray-600">More Info</td>
+                <td className="py-2 px-4 text-sm text-gray-800">{data?.moreInfo || "N/A"}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        {/* Subfolders */}
-        {open && (
-          <div className="ml-6 mt-4 space-y-4">
-            {subcategories.map((sub, index) => (
-              <CollapsibleFolder
-                key={index}
-                name={sub.name}
-                items={sub.items}
-                basePath={data?.title?.toLowerCase() || "default-path"}
-              />
-            ))}
-          </div>
-        )}
+        {/* Table of Contents */}
+        <div className="w-full md:w-2/3 space-y-6 order-2 md:order-2">
+          <div className="text-2xl font-bold text-gray-800">{data?.title}</div>
+
+          {/* Check if there are no subcategories */}
+          {subcategories.length === 0 ? (
+            <div className="bg-white p-6 rounded-xl shadow-md text-center text-gray-500">
+              No subcategories available.
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {subcategories.map((sub, index) => (
+                <div key={index} className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                  <div className="text-lg font-semibold text-gray-700 mb-4">{sub.name}</div>
+                  <ul className="space-y-3">
+                    {sub.items.map((item, idx) => (
+                      <li key={idx} className="group flex items-center gap-3 cursor-pointer rounded-lg hover:bg-gray-200 px-4 py-2 transition-all duration-200 ease-in-out">
+                        <FileIcon dimension={20} color="#99a1af" />
+                        <span className="text-md text-gray-600 font-semibold group-hover:text-blue-600 transition-colors duration-200 ease-in-out">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </Layout>
   );
