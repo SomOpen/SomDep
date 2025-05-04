@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import hljs from "highlight.js";
 import CopyIcon from "../Icons/CopyIcon";
+
 type Props = {
   code: string;
   filename?: string;
 };
 
 const CodeHighlighter = ({ code, filename = "" }: Props) => {
-  const codeRef = useRef(null);
-  const [textValue, setTextValue] = useState("");
+  const codeRef = useRef<HTMLElement | null>(null);
+  const [textValue, setTextValue] = useState<string>("");
   const [showIcon, setShowIcon] = useState(true);
 
+  // Copy text function
   function copyText(text: string) {
     try {
       if (typeof navigator.clipboard !== "undefined") {
@@ -30,12 +32,16 @@ const CodeHighlighter = ({ code, filename = "" }: Props) => {
 
   useEffect(() => {
     if (codeRef.current) {
-      hljs.highlightElement(codeRef.current);
-    }
-    const codeElement = document.getElementById("code");
-    if (codeElement) {
-      const value = (codeElement as HTMLElement).textContent;
-      setTextValue(`${value}`);
+      const highlightedCode = hljs.highlightAuto(code).value;
+
+      if (codeRef.current) {
+        codeRef.current.innerHTML = highlightedCode;
+      }
+      const codeElement = document.getElementById("code");
+      if (codeElement) {
+        const value = (codeElement as HTMLElement).textContent;
+        setTextValue(`${value}`);
+      }
     }
   }, [code]);
 
@@ -48,7 +54,11 @@ const CodeHighlighter = ({ code, filename = "" }: Props) => {
             onClick={() => copyText(textValue)}
             className="text-slate-400 cursor-pointer"
           >
-            {showIcon ? <CopyIcon dimension={20}/> : <span className="text-emerald-400 italic">Copied!</span>}
+            {showIcon ? (
+              <CopyIcon dimension={20} />
+            ) : (
+              <span className="text-emerald-400 italic">Copied!</span>
+            )}
           </button>
         </div>
         <pre className="overflow-auto">
