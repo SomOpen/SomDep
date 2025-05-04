@@ -1,13 +1,7 @@
 import output from "../../output/output.json";
-import SourceCodeIcon from "../Icons/SourceCodeIcon";
-import CubesIcon from "../Icons/CubesIcon";
-import LibraryIcon from "../Icons/LibraryIcon";
-import PlatformIcon from "../Icons/PlatformIcon";
-import DatabaseIcon from "../Icons/DatabaseIcon";
-import DevToolsIcon from "../Icons/DevToolsIcon";
-import RuntimeIcon from "../Icons/RuntimeIcon";
 import FolderIcon from "../Icons/FolderIcon";
 import Layout from "../Components/Layout";
+import applyIcon from "../Utils/applyIcon";
 
 export default function AllFiles() {
   return (
@@ -21,28 +15,14 @@ export default function AllFiles() {
             >
               <div className="flex items-center flex-col p-2">
                 <div className="p-1">
-                  <div className="text-indigo-300 border rounded-full p-1">
-                    {key === "languages" ? (
-                      <SourceCodeIcon />
-                    ) : key === "frameworks" ? (
-                      <CubesIcon />
-                    ) : key === "libraries" ? (
-                      <LibraryIcon />
-                    ) : key === "platforms" ? (
-                      <PlatformIcon />
-                    ) : key === "databases" ? (
-                      <DatabaseIcon />
-                    ) : key === "runtime" ? (
-                      <RuntimeIcon />
-                    ) : (
-                      <DevToolsIcon />
-                    )}
+                  <div className="text-emerald-300 border rounded-full p-1">
+                    {applyIcon(key)}
                   </div>
                 </div>
                 <h1>{key[0].toUpperCase() + key.slice(1)}</h1>
               </div>
               <div className="w-full">
-                <span className="flex gap-4 items-center justify-between bg-indigo-50 px-2">
+                <span className="flex gap-4 items-center justify-between bg-emerald-50 font-mono text-slate-400 px-2">
                   <FolderIcon />
                   {value[key].contents.length}
                 </span>
