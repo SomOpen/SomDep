@@ -1,5 +1,6 @@
 import NotFound from "../Components/404";
 import Category from "./Category";
+import applyCategory from "../Utils/applyCategory";
 
 const contentsPath = [
   "/contents/languages",
@@ -12,19 +13,11 @@ const contentsPath = [
 ];
 
 export default function Contents() {
-  function applyCategory() {
-    for (const path of contentsPath) {
-      switch (location.pathname) {
-        case path:
-          return path.slice(path.lastIndexOf("/") + 1);
-      }
-    }
-  }
   function handlePath() {
     if (!contentsPath.includes(location.pathname)) {
       return <NotFound />;
     } else {
-      return <Category category={applyCategory()} />;
+      return <Category category={applyCategory(contentsPath)} />;
     }
   }
   return handlePath();
