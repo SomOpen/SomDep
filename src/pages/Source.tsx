@@ -2,6 +2,7 @@ import output from "../../output/output.json";
 import FolderIcon from "../Icons/FolderIcon";
 import Layout from "../Components/Layout";
 import applyIcon from "../Utils/applyIcon";
+console.log(output.map(value => Object.keys(value)[0]));
 
 export default function AllFiles() {
   return (
