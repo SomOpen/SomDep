@@ -14,6 +14,7 @@ import SideBarIcon from "../Icons/SideBarIcon";
 import SourceCodeIcon from "../Icons/SourceCodeIcon";
 import { useEffect, useRef } from "react";
 import output from "../../output/output.json";
+import applyIcon from "../Utils/applyIcon";
 
 const topLevel = Object.values(output).map((value) => Object.keys(value)[0]);
 
@@ -82,21 +83,7 @@ export default function SideBar() {
         {topLevel.map((category, index) => (
           <li key={index} className="flex gap-2 items-center p-2">
             <span className="text-slate-500">
-              {category === "languages" ? (
-                <SourceCodeIcon />
-              ) : category === "frameworks" ? (
-                <CubesIcon />
-              ) : category === "libraries" ? (
-                <LibraryIcon />
-              ) : category === "platforms" ? (
-                <PlatformIcon />
-              ) : category === "databases" ? (
-                <DatabaseIcon />
-              ) : category === "runtime" ? (
-                <RuntimeIcon />
-              ) : (
-                <DevToolsIcon />
-              )}
+              {applyIcon(category)}
             </span>
             <a href={`/contents/${category}`} className="text-slate-500 font-semibold">
               {category}
