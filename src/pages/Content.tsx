@@ -17,7 +17,7 @@ export default function Contents() {
     if (!contentsPath.includes(location.pathname)) {
       return <NotFound />;
     } else {
-      return <Category category={applyCategory(contentsPath)} />;
+      return <Category category={applyCategory(contentsPath) || "defaultCategory"} />;
     }
   }
   return handlePath();
