@@ -1,36 +1,29 @@
 import output from "../../output/output.json";
 
-type OutputCategoryData = {
-  contents?: string[];
-  path?: string;
+type CategoryItem = {
+  [category: string]: {
+    path: string;
+    contents: any[]; // You can replace `any` with a stricter type if needed
+  };
 };
 
-type OutputItem = {
-  [category: string]: OutputCategoryData;
-};
-
-type ExtractedData = {
+export default function extractData(category: string): {
   title: string;
-  contents?: string[];
-  path?: string;
-};
+  path: string;
+  contents: any[];
+} | null {
+  const found = ((output as unknown) as CategoryItem[]).find(
+    item => Object.keys(item)[0] === category
+  );
 
-export default function extractData(
-  category: string
-): ExtractedData | undefined {
-  if (!category) return;
+  if (!found) return null;
 
-  const outputItems = output as unknown as OutputItem[];
-
-  const matched = outputItems.find((item) => Object.keys(item)[0] === category);
-  if (!matched) return;
-
-  const key = Object.keys(matched)[0];
-  const data = matched[key];
+  const title = Object.keys(found)[0];
+  const { path, contents } = found[title];
 
   return {
-    title: key.charAt(0).toUpperCase() + key.slice(1),
-    contents: data?.contents,
-    path: data?.path,
+    title,
+    path,
+    contents,
   };
 }
