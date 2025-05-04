@@ -19,3 +19,8 @@ body, html, #root {
 pre > .hljs {
     background-color: #18191b !important;
 }
+pre {
+    color: #ffffff;
+    padding: 8px;
+    background-color: #18191b !important;
+}
