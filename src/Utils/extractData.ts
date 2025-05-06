@@ -4,9 +4,6 @@ interface CategoryItem {
   [key: string]: {
     path: string;
     contents: any[];
-    contributors?: string[];
-    moreInfo?: string;
-    lastUpdate?: string;
   };
 }
 
@@ -14,9 +11,6 @@ export default function extractData(category: string): {
   title: string;
   path: string;
   contents: any[];
-  contributors?: string[];
-  moreInfo?: string;
-  lastUpdate: string;
 } | null {
   const found = ((output as unknown) as CategoryItem[]).find(
     (item) => Object.keys(item)[0] === category
@@ -31,8 +25,5 @@ export default function extractData(category: string): {
     title,
     path,
     contents,
-    contributors: found[title]?.contributors || [],
-    moreInfo: found[title]?.moreInfo || "No additional info available",
-    lastUpdate: found[title]?.lastUpdate || "No update information available",
   };
 }
