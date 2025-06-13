@@ -1,7 +1,4 @@
 import NotFound from "../Components/404";
-import Category from "./Category";
-import applyCategory from "../Utils/applyCategory";
-
 const contentsPath = [
   "/contents/languages",
   "/contents/frameworks",
@@ -17,7 +14,7 @@ export default function Contents() {
     if (!contentsPath.includes(location.pathname)) {
       return <NotFound />;
     } else {
-      return <Category category={applyCategory(contentsPath) || "defaultCategory"} />;
+      return;
     }
   }
   return handlePath();
