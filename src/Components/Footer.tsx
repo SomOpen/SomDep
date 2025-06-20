@@ -1,6 +1,6 @@
 import GithubIcon from "../Icons/GithubIcon";
 import DiscordIcon from "../Icons/DiscordIcon";
-const sections: string[] = ["Home", "Deprecations"];
+const sections: string[] = ["Home", "Deprecations", "Tables"];
 
 export default function Footer() {
   return (
