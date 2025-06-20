@@ -23,7 +23,7 @@ const advantages_of_somdep = [
       "Wuxu ka ilaalinaya isticmaalka syntax ama farsamooyin aan la taageerin.",
   },
   {
-    title: "Offline ayuu ayaad isticmaali karta",
+    title: "Offline ayaad ku isticmaali karta",
     description:
       "Xogta SomDep waxaad uga baaraandegi kartaa terminal (CLI tool) adigoon internet u baahnayn.",
   },
