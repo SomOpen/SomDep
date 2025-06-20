@@ -1,9 +1,10 @@
+import { useEffect, useRef } from "react";
 import logo from "../assets/somdep.svg";
 import GithubIcon from "../Icons/GithubIcon";
 import DiscordIcon from "../Icons/DiscordIcon";
-import DocumentIcon from "../Icons/DocumentIcon";
 import MenuIcon from "../Icons/MenuIcon";
-import { useEffect, useRef } from "react";
+import DownfallIcon from "../Icons/DownfallIcon";
+import TableIcon from "../Icons/TableIcon";
 
 export default function Nav({
   show_top_layer = true,
@@ -66,12 +67,20 @@ export default function Nav({
             </h1>
           </div>
           {show_source ? (
-            <button className="rounded-md max-[339px]:bg-white max-[339px]:shadow-none bg-slate-800 shadow-md py-2 px-3 cursor-pointer font-bold text-emerald-400 border border-slate-200">
-              <a href="/source" className="flex gap-2 items-center ">
-                <DocumentIcon />
-                <span className="max-[339px]:hidden">Source</span>
-              </a>
-            </button>
+            <div className="flex gap-3">
+              <button className="rounded-md max-[339px]:shadow-none shadow-md py-2 px-3 cursor-pointer font-bold text-emerald-500 border border-slate-200">
+                <a title="Deprecations" href="/deprecations" className="flex gap-2 items-center ">
+                  <DownfallIcon />
+                  <span className="max-[500px]:hidden">Deprecations</span>
+                </a>
+              </button>
+              <button className="rounded-md max-[339px]:shadow-none shadow-md py-2 px-3 cursor-pointer font-bold text-emerald-500 border border-slate-200">
+                <a title="Tables" href="/tables" className="flex gap-2 items-center ">
+                  <TableIcon />
+                  <span className="max-[500px]:hidden">Tables</span>
+                </a>
+              </button>
+            </div>
           ) : null}
         </div>
         <div className="flex gap-2">
