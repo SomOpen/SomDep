@@ -1,5 +1,4 @@
 import "./App.css";
-import "highlight.js/styles/github-dark.css";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router";
 import Contents from "./pages/Content";
