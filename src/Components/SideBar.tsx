@@ -6,10 +6,6 @@ import HeartIcon from "../Icons/HeartIcon";
 import HomeIcon from "../Icons/HomeIcon";
 import SideBarIcon from "../Icons/SideBarIcon";
 import { useEffect, useRef } from "react";
-import output from "../../output/output.json";
-import applyIcon from "../Utils/applyIcon";
-
-const topLevel = Object.values(output).map((value) => Object.keys(value)[0]);
 
 const main_sections = ["Home", "Contribute", "Contact"];
 
@@ -73,16 +69,7 @@ export default function SideBar() {
       </ul>
       {/* Top-level Categories */}
       <ul className="p-2 border-b-2 border-slate-200 flex flex-col gap-3">
-        {topLevel.map((category, index) => (
-          <li key={index} className="flex gap-2 items-center p-2">
-            <span className="text-slate-500">
-              {applyIcon(category)}
-            </span>
-            <a href={`/contents/${category}`} className="text-slate-500 font-semibold">
-              {category}
-            </a>
-          </li>
-        ))}
+        
       </ul>
       {/* Community */}
       <div className="flex flex-col gap-3 border border-slate-200 shadow rounded-md m-3 p-2">
