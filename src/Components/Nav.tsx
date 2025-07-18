@@ -84,10 +84,10 @@ export default function Nav({
           ) : null}
         </div>
         <div className="flex gap-2">
-          <a>
+          <a href="https://github.com/Adam-Elmi/SomDep">
             <GithubIcon />
           </a>
-          <a>
+          <a href="https://discord.com/users/adamcade">
             <DiscordIcon />
           </a>
         </div>
