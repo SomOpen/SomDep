@@ -24,7 +24,7 @@ export default function Footer() {
         <span className="text-slate-400 italic"
           >&copy; <a href="https://github.com/Adam-Elmi" target="_blank" className="mr-2">Adam Elmi</a> {new Date().getFullYear()}</span
         >
-        <a href="https:github.com/Adam-Elmi/SomCheat">
+        <a href="https://github.com/Adam-Elmi/SomDep">
           <GithubIcon />
         </a>
         <a href="https://discord.com/users/adamcade">
